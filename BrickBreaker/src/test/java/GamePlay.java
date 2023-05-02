@@ -150,6 +150,47 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+      if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if(player1 >= 600) {
+                player1 = 600;
+            } else {
+                moveright();
+            }
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            if(player1 <10) {
+                player1 = 10;
+            } else {
+                moveleft();
+            }
+        }
 
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!play) {
+                play = true;
+                ballposx = 120;
+                ballposy = 350;
+                ballxdir = -1;
+                ballydir = -2;
+                player1 = 310;
+                score = 0;
+                totalbricks = 21;
+                map = new MapGenerator(3,7);
+
+                repaint();
+            };
+
+        }
     }
+
+    public void moveright() {
+        play = true;
+        player1+=20;
+    }
+    public void moveleft() {
+        play = true;
+        player1-=20;
+  }
+
 }
+    
